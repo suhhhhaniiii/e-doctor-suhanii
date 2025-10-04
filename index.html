@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>E-Doctor: Online Health Platform</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(to right, white, white);
+      color: #222;
+    }
+    header {
+      background: #0077b6;
+      color: #0b0b0b;
+      padding: 1.3em 0;
+      text-align: center;
+      font-size: 2em;
+      font-weight: bold;
+    }
+    nav a {
+      color: #131111;
+      text-decoration: none;
+      margin: 0 2em;
+      padding: 1em 0.2em;
+      font-weight: bold;
+      font-size: 1.13em;
+      transition: color 0.18s;
+    }
+    nav a.active, nav a:hover {
+      color: #90e0ef;
+    }
+    .container {
+      max-width: 1000px;
+      margin: 2.3em auto;
+      background: #f3f9fb;
+      border-radius: 14px;
+      box-shadow: 0 8px 50px #b3c9ffcc;
+      padding: 2.2em 2em 1.2em 2em;
+    }
+    section {
+      display: none;
+    }
+     section.active {
+      display: block;
+      animation: fadeIn 0.8s;
+    }
+    @keyframes fadeIn { from {opacity:.1;} to {opacity:1;} }
+    .doctors-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2em;
+    }
+    .doctor-card {
+      background: #caf0f8;
+      border-radius: 12px;
+      padding: 1em 1em;
+      width: 180px;
+      text-align: center;
+      box-shadow: 0 2px 12px #eee8fb;
+    }
+    .doctor-card h4 {
+      color: #0077b6;
+      margin-bottom: 0.7em;
+    }
+    label { display: block; margin: 0.7em 0 0.4em 0; font-weight: 500;}
+    input, textarea, select {
+      width: 100%; padding: 0.7em; border: 1px solid #90e0ef; border-radius: 8px;
+     font-size: 1em; margin-bottom: 1em; background: #f6fbff;
+    }
+    textarea { resize: vertical;}
+    button {
+      padding: 0.9em 2em; background: #00b4d8; color: #fff;
+      border: none; border-radius: 9px; font-size: 1.13em;
+      cursor: pointer; font-weight: bold;
+      margin-top: 0.6em;
+    }
+    button:hover { background: #0077b6;}
+    footer {
+      background: #0077b6;
+      color: #fff;
+      text-align: center;
+      padding: 1.1em 0;
+      margin-top: 2.7em;
+      border-radius: 0 0 14px 14px;
+    }
+    @media (max-width: 700px) {
+      .doctors-grid {flex-direction: column;}
+      .doctor-card {width: 98%;}
+      .container {padding: 1.1em 0.6em;}
+    }
+    </style>
+</head>
+<body>
+  <header>E-Doctor: Your Virtual Clinic</header>
+  <nav>
+    <a href="#" id="nav-home" onclick="showPage('home')">Home</a>
+    <a href="#" id="nav-history" onclick="showPage('history')">Medical History</a>
+    <a href="#" id="nav-query" onclick="showPage('query')">Get Consultation</a>
+    <a href="#" id="nav-appointment" onclick="showPage('appointment')">Book Appointment</a>
+    <a href="#" id="nav-doctors" onclick="showPage('doctors')">Doctors Directory</a>
+  </nav>
+  <div class="container">
+    
+    <section id="home" class="active">
+<h2>Welcome to E-Doctor</h2>
+      <p>This platform allows you to safely store your medical history, consult about health conditions, and book appointments with top doctors around the country.</p>
+    </section>
+    
+    <section id="history">
+      <h2>Your Medical History</h2>
+      <form id="historyForm">
+        <label for="medName">Full Name</label>
+        <input type="text" id="medName" required placeholder="Enter your name">
+        <label for="medHistory">Medical Conditions & History</label>
+        <textarea id="medHistory" rows="4" required placeholder="
+Describe your medical history"></textarea>
+        <label for="medAllergies">Allergies</label>
+      </form>
+        <textarea id="medAllergies" rows="2" placeholder="List any allergies"></textarea>
+        <label for="medMedications">Current Medications</label>
+        <textarea id="medMedications" rows="2" placeholder="List current medications"></textarea>
+        <button type="submit" onclick="alert('Medical history 
+     </section>
+  </div>
+    <section id="query">
+      <h2>Get Health Consultation</h2>
+      <form id="queryForm">
+        <label for="queryName">Full Name</label>
+        <input type="text" id="queryName" required placeholder="Enter your name">
+        <label for="queryEmail">Email Address</label>
+        <input type="email" id="queryEmail" required placeholder="Enter your email">
+        <label for="queryMessage">Your Health Query</label>
+        <textarea id="queryMessage" rows="5" required placeholder="Describe your health concern"></textarea>
+        <button type="submit" onclick="alert('Your query has been submitted! A doctor will get back to you soon.')">Submit Query</button>
+      </form>
+    </section>
+    
+    <section id="appointment">
+      <h2>Book an Appointment</h2>
+      <form id="appointmentForm">
+        <label for="appName">Full Name</label>
+        <input type="text" id="appName" required placeholder="Enter your name">
+        <label for="appEmail">Email Address</label>
+        <input type="email" id="appEmail" required placeholder="Enter your email">
+        <label for="appDoctor">Select Doctor</label>
+        <select id="appDoctor" required>
+          <option value="" disabled selected>Select a doctor</option>
+          <option value="Dr. suhani singh">Dr. Smith - Cardiologist</option>
+          <option value="Dr. Suresh Dermatologist">Dr. Johnson - Dermatologist</option>
+          <option value="Dr. Diya General Physician">Dr. Lee - General Physician</option>
+           <option value="Dr. Niyati - Pediatrician">Dr. Patel - Pediatrician</option>
+        </select>
+        <label for="appDate">Preferred Date & Time</label>
+        <input type="datetime-local" id="appDate" required>
+        <button type="submit" onclick="alert('Your appointment request has been sent! You will receive a confirmation email shortly.')">Book Appointment</button>
+      </form>
+    </section>
+    
+    <section id="doctors">
+    <h2>Doctors Directory</h2>
+      <div class="doctors-grid">
+        <div class="doctor-card">
+          <h4>Dr.Suhani singh</h4>
+          <p>Cardiologist with 10 years of experience in heart health and treatments.</p>
+        </div>
+        <div class="doctor-card">
+          <h4>Dr. Suresh kumar</h4>
+          <p>Expert Dermatologist specializing in skin conditions and cosmetic treatments.</p>  2
+        </div>
+        <div class="doctor-card">
+            <h4>Dr. Niyati patel</h4>
+            <p>General Physician providing comprehensive healthcare for all ages.</p>
+
+        </div>
+        <div class="doctor-card">
+            <h4>Dr. Diya patel</h4>
+            <p>Pediatrician dedicated to children's health and wellness.</p>
+        </div>
+      </div>    
+    </section>
+    </div>
+     <footer>
+        &copy; 2024 E-Doctor. All rights reserved.
+    </footer>
+    <script>
+    function showPage(pageId) {
+      // Hide all sections
+      document.querySelectorAll('section').forEach(section => {
+        section.classList.remove('active');
+      });
+      // Remove active class from all nav links
+      document.querySelectorAll('nav a').forEach(link => {
+        link.classList.remove('active');
+      });
+      // Show the selected section
+      document.getElementById(pageId).classList.add('active');
+      // Add active class to the clicked nav link
+      document.getElementById('nav-' + pageId).classList.add('active');
+    }
+    // Set initial active nav link
+    document.getElementById('nav-home').classList.add('active');
+    </script>
+</body>
+</html>
+
